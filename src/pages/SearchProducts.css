@@ -1,0 +1,8 @@
+.cardProduct {
+  border: 2px solid black;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 400px;
+}
