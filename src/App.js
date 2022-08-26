@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Checkout from './pages/Checkout';
+import DetailsProduct from './pages/DetailsProduct';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
-import DetailsProduct from './pages/DetailsProduct';
-import Checkout from './pages/Checkout';
 
 class App extends React.Component {
   constructor() {
