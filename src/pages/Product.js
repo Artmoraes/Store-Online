@@ -65,7 +65,7 @@ class Product extends React.Component {
             type="button"
             data-testid="product-increase-quantity"
             onClick={ this.handleQuantity }
-            disabled={ valueCart === available }
+            disabled={ valueCart === 'available' }
           >
             +
           </button>
