@@ -37,7 +37,7 @@ class Product extends React.Component {
   render() {
     const { title, image, price, id, freeShipping } = this.props;
     const { valueCart } = this.state;
-    
+
     return (
       <section data-testid="product">
         { freeShipping ? <h3 data-testid="free-shipping">Frete grátis</h3> : '' }

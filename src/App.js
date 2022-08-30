@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import DataProvider from './context/DataProvider';
 import Checkout from './pages/Checkout';
 import DetailsProduct from './pages/DetailsProduct';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import ShoppingCart from './pages/ShoppingCart';
 
 class App extends React.Component {
@@ -35,34 +37,38 @@ class App extends React.Component {
     const { productsInCart } = this.state;
 
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact>
-            <Home
-              addCartList={ this.addCartList }
+      <DataProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact>
+              <Home
+                addCartList={this.addCartList}
+              />
+            </Route>
+            <Route path="/ShoppingCart">
+              <ShoppingCart
+                removeProduct={this.removeProduct}
+                productsInCart={productsInCart}
+              />
+            </Route>
+            <Route path="/" exact component={Home} />
+            <Route path="/ShoppingCart" component={ShoppingCart} />
+            <Route
+              path="/DetailsProduct/:id"
+              render={(props) => (<DetailsProduct
+                {...props}
+                addCartList={this.addCartList}
+              />)}
             />
-          </Route>
-          <Route path="/ShoppingCart">
-            <ShoppingCart
-              removeProduct={ this.removeProduct }
-              productsInCart={ productsInCart }
-            />
-          </Route>
-          <Route path="/" exact component={ Home } />
-          <Route path="/ShoppingCart" component={ ShoppingCart } />
-          <Route
-            path="/DetailsProduct/:id"
-            render={ (props) => (<DetailsProduct
-              { ...props }
-              addCartList={ this.addCartList }
-            />) }
-          />
-          <Route path="/Checkout">
-            <Checkout productsInCart={ productsInCart } />
-          </Route>
-
-        </Switch>
-      </BrowserRouter>
+            <Route path="/Checkout">
+              <Checkout productsInCart={productsInCart} />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </DataProvider>
     );
   }
 }
