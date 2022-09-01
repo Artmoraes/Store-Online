@@ -79,7 +79,7 @@ function Register() {
         />
         <input id="date" type="date" value={date} onChange={({ target }) => {
           setDate(target.value);
-        }} max="2010-01-01" required></input><span class="validity"></span>
+        }} max="2010-01-01" required></input>
         <Link to={'/'}>
           <button type="button" disabled={buttonRegister} onClick={register}>Registrar</button>
         </Link>
