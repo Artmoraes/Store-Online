@@ -60,21 +60,21 @@ class DetailsProduct extends React.Component {
 
     return (
       <section>
-        { freeShipping ? <h3 data-testid="free-shipping">Frete grátis</h3> : '' }
-        <p data-testid="product-detail-name">{ detailsObj.title }</p>
-        <img src={ detailsObj.thumbnail } alt={ detailsObj.title } />
+        {freeShipping ? <h3 data-testid="free-shipping">Frete grátis</h3> : ''}
+        <p data-testid="product-detail-name">{detailsObj.title}</p>
+        <img src={detailsObj.thumbnail} alt={detailsObj.title} />
         <div>
           <button
             data-testid="product-detail-add-to-cart"
             type="submit"
-            onClick={ this.auxiliarFunction }
+            onClick={this.auxiliarFunction}
           >
             adicionar ao carrinho
           </button>
           <input
             type="number"
             data-testid="shopping-cart-product-quantity"
-            onChange={ this.handleChange }
+            onChange={this.handleChange}
           />
 
           <Link
@@ -82,11 +82,11 @@ class DetailsProduct extends React.Component {
             to="/ShoppingCart"
           >
             <FaShoppingCart />
-            <p data-testid="shopping-cart-size">{ count }</p>
+            <p data-testid="shopping-cart-size">{count}</p>
           </Link>
         </div>
         <div>
-          <AvaliationProduct id={ id } />
+          <AvaliationProduct id={id} />
         </div>
       </section>
     );

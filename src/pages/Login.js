@@ -1,15 +1,9 @@
 import React, { useContext } from "react";
+import { Link, Redirect } from "react-router-dom";
 import ProjectContext from "../context/ProjectContext";
 
 function Login() {
-  const { email, setEmail, password, setPassword, button, setButton } = useContext(ProjectContext);
-  console.log(email, password);
-  const validationButton = () => {
-    if (password >= 7) {
-      return false
-    }
-    return true;
-  };
+  const { email, setEmail, password, setPassword } = useContext(ProjectContext);
   return (
     <div>
       <form>
@@ -26,15 +20,18 @@ function Login() {
           type="password"
           id="pass"
           name="password"
-          min="8"
           value={password}
           onChange={({ target }) => {
             setPassword(target.value);
-
           }}
           required
         />
-        <button type="button" disabled={validationButton()} onClick={console.log('button')}>Login</button>
+        <Link to="/">
+          <button type="button" disabled={password.length >= 7 ? false : true}>Login</button>
+        </Link>
+        <Link to="/register">
+          <button type="button">Registrar</button>
+        </Link>
       </form>
     </div>
   );

@@ -6,7 +6,9 @@ import Checkout from './pages/Checkout';
 import DetailsProduct from './pages/DetailsProduct';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import ShoppingCart from './pages/ShoppingCart';
+import User from './pages/User';
 
 class App extends React.Component {
   constructor() {
@@ -65,6 +67,12 @@ class App extends React.Component {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/user">
+              <User />
             </Route>
           </Switch>
         </BrowserRouter>
