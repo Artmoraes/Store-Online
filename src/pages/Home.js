@@ -26,11 +26,6 @@ function Home() {
     }
   };
 
-  const handleButtonSelect = () => {
-    // const { id } = target;
-    // this.setState({ categoryId: id });
-  }
-
   const handleInput = ({ target }) => {
     const { value } = target;
     const inputObj = { valueInput: value };
@@ -43,7 +38,7 @@ function Home() {
   return (
     <section>
       <div>
-        <Categories>{IdCategories !== '' ? loadProducts() : ''}</Categories>
+        <Categories>{loadProducts}</Categories>
       </div>
       <h1 data-testid="home-initial-message">
         Digite algum termo de pesquisa ou escolha uma categoria.

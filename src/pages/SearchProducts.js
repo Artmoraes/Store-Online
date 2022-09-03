@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
+import ProjectContext from '../context/ProjectContext';
 import Product from './Product';
 import './SearchProducts.css';
 
 async function SearchProducts() {
-  listProductChecked = (dataProducts) => {
-    const { addCartList } = this.props;
+  const { InputSearchProduct, setInputSearchProduct } = useContext(ProjectContext);
+
+  const listProductChecked = (dataProducts) => {
+    // const { addCartList } = this.props;
     if (dataProducts) {
       return (
         dataProducts.map((productChecked, index) => (
@@ -20,7 +23,7 @@ async function SearchProducts() {
                 price={productChecked.price}
                 key={productChecked.id}
                 id={productChecked.id}
-                addCartList={addCartList}
+                // addCartList={addCartList}
                 freeShipping={productChecked.shipping.free_shipping}
                 available={productChecked.available_quantity}
               />
@@ -38,7 +41,8 @@ async function SearchProducts() {
       <input
         type="text"
         data-testid="query-input"
-      // onChange={ handleInput }
+        value={InputSearchProduct}
+        onChange={({ target }) => { setInputSearchProduct(target.value) }}
       />
       <button
         data-testid="query-button"
@@ -53,7 +57,7 @@ async function SearchProducts() {
   return (
     <>
       {inputForm()}
-      {listProductChecked(dataProductsChecked)}
+      {/* {listProductChecked(dataProductsChecked)} */}
     </>
   );
 }

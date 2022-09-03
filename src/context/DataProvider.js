@@ -28,6 +28,7 @@ function DataProvider({ children }) {
 
   const [categories, setCategories] = useState([]);
   const [IdCategories, setIdCategories] = useState();
+  const [InputSearchProduct, setInputSearchProduct] = useState('');
 
 
   useEffect(() => {
@@ -160,7 +161,8 @@ function DataProvider({ children }) {
     setButtonUserLastName, buttonUserEmailCheck,
     setButtonUserEmailCheck, buttonUserDate,
     setButtonUserDate, categories,
-    setCategories, IdCategories, setIdCategories
+    setCategories, IdCategories, setIdCategories,
+    InputSearchProduct, setInputSearchProduct
   }; // Constante feita para alocar todos os dados que serão passados posteriormente no value do provider
 
   return (
