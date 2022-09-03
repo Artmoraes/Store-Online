@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import { getCategories } from "../services/api";
 import ProjectContext from "./ProjectContext";
 
 function DataProvider({ children }) {
@@ -11,6 +12,7 @@ function DataProvider({ children }) {
   const [emailRegister, setEmailRegister] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
+
   const [buttonUserName, setButtonUserName] = useState(false);
   const [buttonUserLastName, setButtonUserLastName] = useState(false);
   const [buttonUserEmail, setButtonUserEmail] = useState(false);
@@ -24,6 +26,19 @@ function DataProvider({ children }) {
   const [, setConfirmDate] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState('');
 
+  const [categories, setCategories] = useState([]);
+  const [IdCategories, setIdCategories] = useState();
+
+
+  useEffect(() => {
+    try {
+      // Utilizado na aba Home para atualizar a API
+      getCategories().then((dataObj) => { setCategories(dataObj) })
+
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
 
   useEffect(() => {
@@ -142,7 +157,10 @@ function DataProvider({ children }) {
     showConfirmPassword, setShowConfirmPassword,
     buttonUserName, setButtonUserName,
     setConfirmLastName, buttonUserLastName,
-    setButtonUserLastName, buttonUserEmailCheck, setButtonUserEmailCheck, buttonUserDate, setButtonUserDate
+    setButtonUserLastName, buttonUserEmailCheck,
+    setButtonUserEmailCheck, buttonUserDate,
+    setButtonUserDate, categories,
+    setCategories, IdCategories, setIdCategories
   }; // Constante feita para alocar todos os dados que serão passados posteriormente no value do provider
 
   return (

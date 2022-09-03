@@ -4,25 +4,25 @@ import Product from './Product';
 import './SearchProducts.css';
 
 class SearchProducts extends React.Component {
-  listProductChecked = (dataProducts) => {
+  listProductChecked = async (dataProducts) => {
     const { addCartList } = this.props;
     if (dataProducts) {
       return (
-        dataProducts.map((productChecked, index) => (
-          <section key={ index }>
+        await dataProducts.map((productChecked, index) => (
+          <section key={index}>
             <div
-              key={ productChecked.id }
+              key={productChecked.id}
               className="cardProduct"
             >
               <Product
-                title={ productChecked.title }
-                image={ productChecked.thumbnail }
-                price={ productChecked.price }
-                key={ productChecked.id }
-                id={ productChecked.id }
-                addCartList={ addCartList }
-                freeShipping={ productChecked.shipping.free_shipping }
-                available={ productChecked.available_quantity }
+                title={productChecked.title}
+                image={productChecked.thumbnail}
+                price={productChecked.price}
+                key={productChecked.id}
+                id={productChecked.id}
+                addCartList={addCartList}
+                freeShipping={productChecked.shipping.free_shipping}
+                available={productChecked.available_quantity}
               />
             </div>
           </section>
@@ -39,12 +39,12 @@ class SearchProducts extends React.Component {
         <input
           type="text"
           data-testid="query-input"
-          onChange={ handleInput }
+          onChange={handleInput}
         />
         <button
           data-testid="query-button"
           type="button"
-          onClick={ loadProducts }
+          onClick={loadProducts}
         >
           Buscar
         </button>
