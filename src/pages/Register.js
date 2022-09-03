@@ -7,11 +7,11 @@ function Register() {
 
   const { email, setEmail,
     password, setPassword,
-    buttonRegister, setButtonRegister,
+    buttonRegister,
     name, setName,
     lastName, setLastName,
     emailRegister, setEmailRegister,
-    passwordRegister, setPasswordRegister, storage, setStorage, date, setDate } = useContext(ProjectContext);
+    passwordRegister, setPasswordRegister, date, setDate } = useContext(ProjectContext);
 
   function register() {
     localStorage.setItem('name', JSON.stringify(name));

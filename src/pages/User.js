@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
 import ProjectContext from "../context/ProjectContext";
 import imagem from './png/imagemPreta.jpg'
 
@@ -8,16 +7,23 @@ function User() {
     email, setEmail,
     password, setPassword, name, setName,
     lastName, setLastName, date, setDate,
-    buttonUserEmail,
+    buttonUserEmail, buttonUserPassword,
+    setConfirmName, buttonUserName, buttonUserLastName,
+    showConfirmPassword, setShowConfirmPassword, setConfirmLastName,
+    buttonUserDate
   } = useContext(ProjectContext);
-  // setPasswordRegister('');
-  const [pass, setPass] = useState(false);
 
   const [showElementName, setShowElementName] = useState(false);
   const [showElementLastName, setShowElementLastName] = useState(false);
   const [showElementEmail, setShowElementEmail] = useState(false);
   const [showElementPassword, setShowElementPassword] = useState(false);
   const [showElementDate, setShowElementDate] = useState(false);
+  const [confirmElementPassword, setConfirmElementPassword] = useState(false);
+  const [showElementNameButton, setShowElementNameButton] = useState(false);
+  const [showElementLastNameButton, setShowElementLastNameButton] = useState(false);
+  const [showElementEmailButton, setShowElementEmailButton] = useState(false);
+  const [showElementPasswordButton, setShowElementPasswordButton] = useState(false);
+  const [showElementDateButton, setShowElementDateButton] = useState(false);
 
   setName(localStorage.getItem('name'));
   setLastName(localStorage.getItem('lastName'));
@@ -27,38 +33,81 @@ function User() {
 
   function NewName() {
     localStorage.setItem('name', name);
-    return (
-      <input type="text"
-        value={name}
-        onChange={({ target }) => {
-          setName(target.value);
-        }} required>
-      </input>
-    );
+    if (showConfirmPassword === password) {
+      return (
+        <input type="text"
+          value={name}
+          onChange={({ target }) => {
+            setName(target.value);
+          }} required>
+        </input>
+      );
+    } else if (showConfirmPassword !== password) {
+      return (
+        <section>
+          <p>Insira sua senha para alterar o Nome</p>
+          <input type="text"
+            value={showConfirmPassword}
+            onChange={({ target }) => {
+              setShowConfirmPassword(target.value);
+            }} required>
+          </input>
+        </section>
+      );
+    }
   }
 
   function NewLastName() {
     localStorage.setItem('lastName', lastName);
-    return (
-      <input type="text"
-        value={lastName}
-        onChange={({ target }) => {
-          setLastName(target.value);
-        }} required>
-      </input>
-    );
+    if (showConfirmPassword === password) {
+      return (
+        <input type="text"
+          value={lastName}
+          onChange={({ target }) => {
+            setLastName(target.value);
+          }} required>
+        </input>
+      );
+    } else if (showConfirmPassword !== password) {
+      return (
+        <section>
+          <p>Insira sua senha para alterar o Nome</p>
+          <input type="text"
+            value={showConfirmPassword}
+            onChange={({ target }) => {
+              setShowConfirmPassword(target.value);
+            }} required>
+          </input>
+        </section>
+      );
+    }
   }
 
   function NewEmail() {
     localStorage.setItem('email', email);
-    return (
-      <input type="email"
-        value={email}
-        onChange={({ target }) => {
-          setEmail(target.value);
-        }} required>
-      </input>
-    );
+
+    if (showConfirmPassword === password) {
+      return (
+        <input type="email"
+          value={email}
+          onChange={({ target }) => {
+            setEmail(target.value);
+          }} required>
+        </input>
+      );
+    } else if (showConfirmPassword !== password) {
+      return (
+        <section>
+          <p>Insira sua senha para alterar o Email</p>
+          <input type="text"
+            value={showConfirmPassword}
+            onChange={({ target }) => {
+              setShowConfirmPassword(target.value);
+            }} required>
+          </input>
+        </section>
+      );
+    }
   }
 
   function NewPassword() {
@@ -81,36 +130,101 @@ function User() {
 
   function NewDate() {
     localStorage.setItem('date', date);
-    return (
-      <input type="date"
-        value={date}
-        onChange={({ target }) => {
-          setDate(target.value);
-        }} max="2010-01-01" required>
-      </input>
-    );
+    if (showConfirmPassword === password) {
+      return (
+        <input type="date"
+          value={date}
+          onChange={({ target }) => {
+            setDate(target.value);
+          }} max="2010-01-01" required>
+        </input>
+      );
+    } else if (showConfirmPassword !== password) {
+      return (
+        <section>
+          <p>Insira sua senha para alterar a data</p>
+          <input type="text"
+            value={showConfirmPassword}
+            onChange={({ target }) => {
+              setShowConfirmPassword(target.value);
+            }} required>
+          </input>
+        </section>
+      );
+    }
   }
 
   return (
     <div>
       <fieldset>
         <p>Nome: {showElementName ? NewName() : name}</p>
-        <button type="button" onClick={() => { setShowElementName(!showElementName) }} >Mudar Nome</button>
+        {
+          showElementNameButton ?
+            <button type="button" disabled={buttonUserName} onClick={() => {
+              setShowElementName(!showElementName);
+              setShowElementNameButton(!showElementNameButton);
+              setConfirmName(true);
+            }}> Confirmar </button>
+            :
+            <button type="button" onClick={() => {
+              setShowElementName(!showElementName);
+              setShowElementNameButton(!showElementNameButton);
+            }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
+        }
 
         <p>Sobrenome:  {showElementLastName ? NewLastName() : lastName}</p>
-        <button type="button" onClick={() => { setShowElementLastName(!showElementLastName) }} >Mudar Sobreome</button>
+        {showElementLastNameButton ?
+          <button type="button" disabled={buttonUserLastName} onClick={() => {
+            setShowElementLastName(!showElementLastName)
+            setShowElementLastNameButton(!showElementLastNameButton);
+            setConfirmLastName(true);
+          }}> Confirmar </button>
+          :
+          <button type="button" onClick={() => {
+            setShowElementLastName(!showElementLastName)
+            setShowElementLastNameButton(!showElementLastNameButton);
+          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
+        }
 
         <p>Email: {showElementEmail ? NewEmail() : email}</p>
-        <button type="button" disabled={buttonUserEmail} onClick={() => { setShowElementEmail(!showElementEmail) }} >Mudar Email</button>
+        {showElementEmailButton ?
+          <button type="button" disabled={buttonUserEmail} onClick={() => {
+            setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton)
+          }}> Confirmar </button>
+          :
+          <button type="button" onClick={() => {
+            setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton)
+          }} > <span role="img" aria-label="pencil"> ✏️ </span> </button>
+        }
 
         <p>Password: {showElementPassword ? NewPassword() : NoHidePassword(password)}</p>
-        <button type="button" disabled={pass} onClick={() => { setShowElementPassword(!showElementPassword) }} >Mudar Senha</button>
-
+        {showElementPasswordButton ?
+          <button type="button" disabled={buttonUserPassword} onClick={() => {
+            setShowElementPassword(!showElementPassword);
+            setShowElementPasswordButton(!showElementPasswordButton);
+            setConfirmElementPassword(!confirmElementPassword)
+          }}>Confirmar</button>
+          :
+          <button type="button" onClick={() => {
+            setShowElementPassword(!showElementPassword);
+            setShowElementPasswordButton(!showElementPasswordButton)
+          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
+        }
         <p>Data de aniversário: {showElementDate ? NewDate() : date}</p>
 
-        <button type="button" onClick={() => { setShowElementDate(!showElementDate) }} >Mudar Data</button>
+        {showElementDateButton ?
+          <button type="button" disabled={buttonUserDate} onClick={() => {
+            setShowElementDate(!showElementDate);
+            setShowElementDateButton(!showElementDateButton);
+          }}> Confirmar </button>
+          :
+          <button type="button" onClick={() => {
+            setShowElementDate(!showElementDate);
+            setShowElementDateButton(!showElementDateButton);
+          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
+        }
         <br />
-
+        <br />
         <img src={imagem} alt="Tela de usuário" width="150px"></img>
       </fieldset>
     </div>
