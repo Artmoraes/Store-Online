@@ -3,12 +3,12 @@ import React from 'react';
 import Product from './Product';
 import './SearchProducts.css';
 
-class SearchProducts extends React.Component {
-  listProductChecked = async (dataProducts) => {
+async function SearchProducts() {
+  listProductChecked = (dataProducts) => {
     const { addCartList } = this.props;
     if (dataProducts) {
       return (
-        await dataProducts.map((productChecked, index) => (
+        dataProducts.map((productChecked, index) => (
           <section key={index}>
             <div
               key={productChecked.id}
@@ -32,32 +32,30 @@ class SearchProducts extends React.Component {
     return <p>Nenhum produto encontrado</p>;
   }
 
-  render() {
-    const { dataProductsChecked, loadProducts, handleInput } = this.props;
-    const inputForm = () => (
-      <>
-        <input
-          type="text"
-          data-testid="query-input"
-          onChange={handleInput}
-        />
-        <button
-          data-testid="query-button"
-          type="button"
-          onClick={loadProducts}
-        >
-          Buscar
-        </button>
-      </>
-    );
+  // const { dataProductsChecked, loadProducts, handleInput } = this.props;
+  const inputForm = () => (
+    <>
+      <input
+        type="text"
+        data-testid="query-input"
+      // onChange={ handleInput }
+      />
+      <button
+        data-testid="query-button"
+        type="button"
+      // onClick={ loadProducts }
+      >
+        Buscar
+      </button>
+    </>
+  );
 
-    return (
-      <>
-        {inputForm()}
-        {this.listProductChecked(dataProductsChecked)}
-      </>
-    );
-  }
+  return (
+    <>
+      {inputForm()}
+      {listProductChecked(dataProductsChecked)}
+    </>
+  );
 }
 
 SearchProducts.propTypes = {

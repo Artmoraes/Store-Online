@@ -17,7 +17,8 @@ function Home() {
   const [newDataProducts, setNewDataProducts] = useState();
 
   const loadProducts = async () => {
-    const returnProducts = await getProductsFromCategoryAndQuery(IdCategories, valueInput);
+    const loading = await getProductsFromCategoryAndQuery(IdCategories, valueInput);
+    const returnProducts = await loading;
     if (returnProducts.length < 1) {
       setNewDataProducts(setDataProducts(false));
     } else {
