@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ProjectContext from '../context/ProjectContext';
 
 function Categories() {
-  const { categories, IdCategories, setIdCategories } = useContext(ProjectContext);
+  const { categories, setIdCategories } = useContext(ProjectContext);
   return (
     <div>
       <h1>CATEGORIAS</h1>
-      {console.log(categories)}
       {categories.map((element) => (
         <label
           key={element.id}
@@ -18,7 +17,7 @@ function Categories() {
             type="radio"
             name="select"
             id={element.id}
-            onChange={({ target }) => { setIdCategories(target.value) }}
+            onChange={({ target }) => { setIdCategories(target.id) }}
           />
           {element.name}
         </label>))

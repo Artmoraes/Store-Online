@@ -5,41 +5,52 @@ import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
 import ProjectContext from '../context/ProjectContext';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import Product from './Product';
 import SearchProducts from './SearchProducts';
 
 
 function Home() {
-  const { IdCategories, setIdCategories } = useContext(ProjectContext);
-
-  const [valueInput, setValueInput] = useState('');
-  const [categoryId, setCategoryId] = useState('');
-  const [dataProducts, setDataProducts] = useState([]);
-  const [newDataProducts, setNewDataProducts] = useState();
+  const { IdCategories, InputSearchProduct, setInputSearchProduct, newDataProducts, setNewDataProducts } = useContext(ProjectContext);
 
   const loadProducts = async () => {
-    const loading = await getProductsFromCategoryAndQuery(IdCategories, valueInput);
+    const loading = await getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct);
     const returnProducts = await loading;
+    console.log(newDataProducts);
     if (returnProducts.length < 1) {
-      setNewDataProducts(setDataProducts(false));
+      setNewDataProducts(false);
     } else {
-      setNewDataProducts(setDataProducts(returnProducts));
+      setNewDataProducts(returnProducts);
     }
   };
 
-  const handleInput = ({ target }) => {
-    const { value } = target;
-    const inputObj = { valueInput: value };
-    this.setState(inputObj);
+  const inputForm = () => {
+    return (<div>
+      <input
+        type="text"
+        data-testid="query-input"
+        value={InputSearchProduct}
+        onChange={({ target }) => { setInputSearchProduct(target.value) }}
+      />
+      <button
+        data-testid="query-button"
+        type="button"
+        onClick={loadProducts}
+      >
+        Buscar
+      </button>
+    </div>)
+
   }
 
-  // const { addCartList } = this.props;
   const count = localStorage.getItem('count');
 
   return (
     <section>
+      {inputForm()}
       <div>
-        <Categories>{loadProducts}</Categories>
+        <Categories></Categories>
       </div>
+      <div></div>
       <h1 data-testid="home-initial-message">
         Digite algum termo de pesquisa ou escolha uma categoria.
       </h1>
@@ -51,13 +62,7 @@ function Home() {
         <FaShoppingCart />
         <p data-testid="shopping-cart-size">{count}</p>
       </Link>
-      {/* <SearchProducts
-        // addCartList={addCartList}
-        dataProductsChecked={dataProducts}
-        categoryId={categoryId}
-        handleInput={handleInput}
-        loadProducts={loadProducts}
-      /> */}
+      <SearchProducts />
     </section>
   );
 }

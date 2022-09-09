@@ -29,17 +29,18 @@ function DataProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [IdCategories, setIdCategories] = useState();
   const [InputSearchProduct, setInputSearchProduct] = useState('');
-
+  const [newDataProducts, setNewDataProducts] = useState([]);
 
   useEffect(() => {
     try {
       // Utilizado na aba Home para atualizar a API
-      getCategories().then((dataObj) => { setCategories(dataObj) })
+      getCategories().then((dataObj) => { setCategories(dataObj) });
+      // getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct).then((dataObj) => { setNewDataProducts(dataObj) })
 
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  });
 
 
   useEffect(() => {
@@ -162,7 +163,8 @@ function DataProvider({ children }) {
     setButtonUserEmailCheck, buttonUserDate,
     setButtonUserDate, categories,
     setCategories, IdCategories, setIdCategories,
-    InputSearchProduct, setInputSearchProduct
+    InputSearchProduct, setInputSearchProduct,
+    newDataProducts, setNewDataProducts
   }; // Constante feita para alocar todos os dados que serão passados posteriormente no value do provider
 
   return (

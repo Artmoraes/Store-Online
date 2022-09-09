@@ -4,14 +4,14 @@ import ProjectContext from '../context/ProjectContext';
 import Product from './Product';
 import './SearchProducts.css';
 
-async function SearchProducts() {
-  const { InputSearchProduct, setInputSearchProduct } = useContext(ProjectContext);
+function SearchProducts() {
+  const { newDataProducts } = useContext(ProjectContext);
 
-  const listProductChecked = (dataProducts) => {
-    // const { addCartList } = this.props;
-    if (dataProducts) {
+  const listProductChecked = () => {
+    const { results } = newDataProducts;
+    if (results) {
       return (
-        dataProducts.map((productChecked, index) => (
+        results.map((productChecked, index) => (
           <section key={index}>
             <div
               key={productChecked.id}
@@ -35,29 +35,9 @@ async function SearchProducts() {
     return <p>Nenhum produto encontrado</p>;
   }
 
-  // const { dataProductsChecked, loadProducts, handleInput } = this.props;
-  const inputForm = () => (
-    <>
-      <input
-        type="text"
-        data-testid="query-input"
-        value={InputSearchProduct}
-        onChange={({ target }) => { setInputSearchProduct(target.value) }}
-      />
-      <button
-        data-testid="query-button"
-        type="button"
-      // onClick={ loadProducts }
-      >
-        Buscar
-      </button>
-    </>
-  );
-
   return (
     <>
-      {inputForm()}
-      {/* {listProductChecked(dataProductsChecked)} */}
+      {listProductChecked()}
     </>
   );
 }
