@@ -45,25 +45,24 @@ function Home() {
   const count = localStorage.getItem('count');
 
   return (
-    <section>
-      {inputForm()}
-      <div>
+    <main>
+      <nav>
+        {inputForm()}
+        <Link data-testid="shopping-cart-button" to="/ShoppingCart"      >
+          <FaShoppingCart />
+          <p data-testid="shopping-cart-size">{count}</p>
+        </Link>
+      </nav>
+      <aside>
         <Categories></Categories>
-      </div>
-      <div></div>
-      <h1 data-testid="home-initial-message">
-        Digite algum termo de pesquisa ou escolha uma categoria.
-      </h1>
-
-      <Link
-        data-testid="shopping-cart-button"
-        to="/ShoppingCart"
-      >
-        <FaShoppingCart />
-        <p data-testid="shopping-cart-size">{count}</p>
-      </Link>
-      <SearchProducts />
-    </section>
+      </aside>
+      <section>
+        <h1 data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </h1>
+        <SearchProducts />
+      </section>
+    </main>
   );
 }
 
