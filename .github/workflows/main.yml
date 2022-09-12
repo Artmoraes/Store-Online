@@ -16,5 +16,3 @@ jobs:
         - name: instalando as dependências
           run: npm install
 
-        - name: executando o lint para verificar se a erros
-          run: npx eslint .
