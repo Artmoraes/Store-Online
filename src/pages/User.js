@@ -1,3 +1,10 @@
+/* eslint-disable max-lines */
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable indent */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-multi-comp */
 import React, { useContext, useState } from 'react';
 import ProjectContext from '../context/ProjectContext';
 import imagem from './png/imagemPreta.jpg';
@@ -140,6 +147,7 @@ function User() {
     return <p>{'*'.repeat(parameters.length)}</p>;
   }
 
+  // eslint-disable-next-line react/no-multi-comp
   function NewDate() {
     localStorage.setItem('date', date);
     if (showConfirmPassword === password) {
@@ -182,9 +190,9 @@ function User() {
         {
           showElementNameButton
             ? <button
-                type="button"
-                disabled={ buttonUserName }
-                onClick={ () => {
+              type="button"
+              disabled={ buttonUserName }
+              onClick={ () => {
                 setShowElementName(!showElementName);
                 setShowElementNameButton(!showElementNameButton);
                 setConfirmName(true);
@@ -196,8 +204,8 @@ function User() {
 
               </button>
             : <button
-                type="button"
-                onClick={ () => {
+              type="button"
+              onClick={ () => {
                 setShowElementName(!showElementName);
                 setShowElementNameButton(!showElementNameButton);
               } }
@@ -216,9 +224,9 @@ function User() {
         </p>
         {showElementLastNameButton
           ? <button
-              type="button"
-              disabled={ buttonUserLastName }
-              onClick={ () => {
+            type="button"
+            disabled={ buttonUserLastName }
+            onClick={ () => {
               setShowElementLastName(!showElementLastName);
               setShowElementLastNameButton(!showElementLastNameButton);
               setConfirmLastName(true);
@@ -230,8 +238,8 @@ function User() {
 
             </button>
           : <button
-              type="button"
-              onClick={ () => {
+            type="button"
+            onClick={ () => {
               setShowElementLastName(!showElementLastName);
               setShowElementLastNameButton(!showElementLastNameButton);
             } }
@@ -249,9 +257,9 @@ function User() {
         </p>
         {showElementEmailButton
           ? <button
-              type="button"
-              disabled={ buttonUserEmail }
-              onClick={ () => {
+            type="button"
+            disabled={ buttonUserEmail }
+            onClick={ () => {
               setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton);
             } }
           >
@@ -261,8 +269,8 @@ function User() {
 
             </button>
           : <button
-              type="button"
-              onClick={ () => {
+            type="button"
+            onClick={ () => {
               setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton);
             } }
           >
@@ -279,9 +287,9 @@ function User() {
         </p>
         {showElementPasswordButton
           ? <button
-              type="button"
-              disabled={ buttonUserPassword }
-              onClick={ () => {
+            type="button"
+            disabled={ buttonUserPassword }
+            onClick={ () => {
               setShowElementPassword(!showElementPassword);
               setShowElementPasswordButton(!showElementPasswordButton);
               setConfirmElementPassword(!confirmElementPassword);
@@ -289,10 +297,10 @@ function User() {
           >
             Confirmar
 
-          </button>
+            </button>
           : <button
-              type="button"
-              onClick={ () => {
+            type="button"
+            onClick={ () => {
               setShowElementPassword(!showElementPassword);
               setShowElementPasswordButton(!showElementPasswordButton);
             } }
@@ -310,9 +318,9 @@ function User() {
 
         {showElementDateButton
           ? <button
-              type="button"
-              disabled={ buttonUserDate }
-              onClick={ () => {
+            type="button"
+            disabled={ buttonUserDate }
+            onClick={ () => {
               setShowElementDate(!showElementDate);
               setShowElementDateButton(!showElementDateButton);
             } }
@@ -323,8 +331,8 @@ function User() {
 
             </button>
           : <button
-              type="button"
-              onClick={ () => {
+            type="button"
+            onClick={ () => {
               setShowElementDate(!showElementDate);
               setShowElementDateButton(!showElementDateButton);
             } }

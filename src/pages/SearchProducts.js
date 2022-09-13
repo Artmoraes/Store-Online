@@ -1,43 +1,36 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import ProjectContext from '../context/ProjectContext';
-import Product from './Product';
 import './SearchProducts.css';
 
 function SearchProducts() {
-  const { newDataProducts } = useContext(ProjectContext);
+  const {
+    InputSearchProduct, loadProducts, setInputSearchProduct,
+  } = useContext(ProjectContext);
 
-  const listProductChecked = () => {
-    const { results } = newDataProducts;
-    if (results) {
-      return (
-        results.map((productChecked, index) => (
-          <section key={ index }>
-            <div
-              key={ productChecked.id }
-              className="cardProduct"
-            >
-              <Product
-                title={ productChecked.title }
-                image={ productChecked.thumbnail }
-                price={ productChecked.price }
-                key={ productChecked.id }
-                id={ productChecked.id }
-                // addCartList={addCartList}
-                freeShipping={ productChecked.shipping.free_shipping }
-                available={ productChecked.available_quantity }
-              />
-            </div>
-          </section>
-        ))
-      );
-    }
-    return <p>Nenhum produto encontrado</p>;
-  };
+  const inputForm = () => (
+    <div>
+      <input
+        type="text"
+        value={ InputSearchProduct }
+        onChange={ ({ target }) => { setInputSearchProduct(target.value); } }
+      />
+      <button
+        type="button"
+        onClick={ loadProducts }
+      >
+        Buscar
+      </button>
+    </div>
+  );
 
   return (
-    <>
-      {listProductChecked()}
-    </>
+    <fieldset>
+      {inputForm()}
+      <Link to="/user">
+        {/* <User /> */}
+      </Link>
+    </fieldset>
   );
 }
 
