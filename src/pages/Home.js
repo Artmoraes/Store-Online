@@ -1,19 +1,21 @@
-import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
 import ProjectContext from '../context/ProjectContext';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import Product from './Product';
+// import Product from './Product';
 import SearchProducts from './SearchProducts';
 
-
 function Home() {
-  const { IdCategories, InputSearchProduct, setInputSearchProduct, newDataProducts, setNewDataProducts } = useContext(ProjectContext);
+  const { IdCategories, InputSearchProduct,
+    setInputSearchProduct, newDataProducts,
+    setNewDataProducts } = useContext(ProjectContext);
 
   const loadProducts = async () => {
-    const loading = await getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct);
+    const loading = await getProductsFromCategoryAndQuery(
+      IdCategories, InputSearchProduct,
+    );
     const returnProducts = await loading;
     console.log(newDataProducts);
     if (returnProducts.length < 1) {
@@ -23,24 +25,23 @@ function Home() {
     }
   };
 
-  const inputForm = () => {
-    return (<div>
+  const inputForm = () => (
+    <div>
       <input
         type="text"
         data-testid="query-input"
-        value={InputSearchProduct}
-        onChange={({ target }) => { setInputSearchProduct(target.value) }}
+        value={ InputSearchProduct }
+        onChange={ ({ target }) => { setInputSearchProduct(target.value); } }
       />
       <button
         data-testid="query-button"
         type="button"
-        onClick={loadProducts}
+        onClick={ loadProducts }
       >
         Buscar
       </button>
-    </div>)
-
-  }
+    </div>
+  );
 
   const count = localStorage.getItem('count');
 
@@ -48,13 +49,13 @@ function Home() {
     <main>
       <nav>
         {inputForm()}
-        <Link data-testid="shopping-cart-button" to="/ShoppingCart"      >
+        <Link data-testid="shopping-cart-button" to="/ShoppingCart">
           <FaShoppingCart />
           <p data-testid="shopping-cart-size">{count}</p>
         </Link>
       </nav>
       <aside>
-        <Categories></Categories>
+        <Categories />
       </aside>
       <section>
         <h1 data-testid="home-initial-message">
@@ -67,7 +68,7 @@ function Home() {
 }
 
 Home.propTypes = {
-  addCartList: PropTypes.func.isRequired,
+  // addCartList: PropTypes.func.isRequired,
 };
 
 export default Home;

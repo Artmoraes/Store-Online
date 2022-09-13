@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import ProjectContext from '../context/ProjectContext';
 import Product from './Product';
@@ -12,20 +11,20 @@ function SearchProducts() {
     if (results) {
       return (
         results.map((productChecked, index) => (
-          <section key={index}>
+          <section key={ index }>
             <div
-              key={productChecked.id}
+              key={ productChecked.id }
               className="cardProduct"
             >
               <Product
-                title={productChecked.title}
-                image={productChecked.thumbnail}
-                price={productChecked.price}
-                key={productChecked.id}
-                id={productChecked.id}
+                title={ productChecked.title }
+                image={ productChecked.thumbnail }
+                price={ productChecked.price }
+                key={ productChecked.id }
+                id={ productChecked.id }
                 // addCartList={addCartList}
-                freeShipping={productChecked.shipping.free_shipping}
-                available={productChecked.available_quantity}
+                freeShipping={ productChecked.shipping.free_shipping }
+                available={ productChecked.available_quantity }
               />
             </div>
           </section>
@@ -33,7 +32,7 @@ function SearchProducts() {
       );
     }
     return <p>Nenhum produto encontrado</p>;
-  }
+  };
 
   return (
     <>
@@ -43,10 +42,10 @@ function SearchProducts() {
 }
 
 SearchProducts.propTypes = {
-  dataProductsChecked: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loadProducts: PropTypes.func.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  addCartList: PropTypes.func.isRequired,
+  // dataProductsChecked: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // loadProducts: PropTypes.func.isRequired,
+  // handleInput: PropTypes.func.isRequired,
+  // addCartList: PropTypes.func.isRequired,
 };
 
 export default SearchProducts;

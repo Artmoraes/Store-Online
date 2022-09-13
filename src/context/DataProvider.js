@@ -1,17 +1,16 @@
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import { getCategories, getProductsFromCategoryAndQuery } from "../services/api";
-import ProjectContext from "./ProjectContext";
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import ProjectContext from './ProjectContext';
 
 function DataProvider({ children }) {
   const [storage, setStorage] = useState();
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailRegister, setEmailRegister] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordRegister, setPasswordRegister] = useState("");
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailRegister, setEmailRegister] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordRegister, setPasswordRegister] = useState('');
 
   const [buttonUserName, setButtonUserName] = useState(false);
   const [buttonUserLastName, setButtonUserLastName] = useState(false);
@@ -34,39 +33,37 @@ function DataProvider({ children }) {
   useEffect(() => {
     try {
       // Utilizado na aba Home para atualizar a API
-      getCategories().then((dataObj) => { setCategories(dataObj) });
-      getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct).then((dataObj) => { setNewDataProducts(dataObj) })
-
+      // getCategories().then((dataObj) => { setCategories(dataObj); });
+      // getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct).then((dataObj) => { setNewDataProducts(dataObj) })
     } catch (error) {
       console.error(error);
     }
   }, []);
 
+  // useEffect(() => {
+  //   try {
+  //     // Utilizado na aba do Register
+  //     // if (compareEmail() && comparePassword()) {
+  //     //   setButtonRegister(false);
+  //     // } else {
+  //     //   setButtonRegister(true);
+  //     // }
 
-  useEffect(() => {
-    try {
-      // Utilizado na aba do Register
-      if (compareEmail() && comparePassword()) {
-        setButtonRegister(false);
-      } else {
-        setButtonRegister(true);
-      }
+  //     // if (checkPassword(password)) {
+  //     //   setButtonUserPassword(false);
+  //     // } else {
+  //     //   setButtonUserPassword(true);
+  //     // }
 
-      if (checkPassword(password)) {
-        setButtonUserPassword(false);
-      } else {
-        setButtonUserPassword(true);
-      }
-
-      if (checkEmailUser(email)) {
-        setButtonUserEmail(false);
-      } else {
-        setButtonUserEmail(true);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [compareEmail, comparePassword, email, password]);
+  //     // if (checkEmailUser(email)) {
+  //     //   setButtonUserEmail(false);
+  //     // } else {
+  //     //   setButtonUserEmail(true);
+  //     // }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [compareEmail, comparePassword, email, password]);
 
   useEffect(() => {
     try {
@@ -102,7 +99,6 @@ function DataProvider({ children }) {
         setButtonUserDate(true);
         setConfirmDate(true);
       }
-
     } catch (error) {
       console.error(error);
     }
@@ -110,65 +106,93 @@ function DataProvider({ children }) {
 
   function compareEmail() {
     const emailRegex = /\S+@\S+\.\S+/;
-    if (emailRegex.test(email) && emailRegex.test(emailRegister) && email === emailRegister) {
+    if (emailRegex.test(email)
+    && emailRegex.test(emailRegister)
+    && email === emailRegister) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   function comparePassword() {
-    if (password === passwordRegister && password.length > 7 && passwordRegister.length > 7) {
+    const seven = 7;
+    if (password === passwordRegister
+      && password.length > seven
+      && passwordRegister.length > seven) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   function checkPassword(passOne) {
-    if (passOne.length > 7) {
+    const seven = 7;
+
+    if (passOne.length > seven) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
-  function checkEmailUser(emailOne) {
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (emailRegex.test(emailOne)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // function checkEmailUser(emailOne) {
+  //   const emailRegex = /\S+@\S+\.\S+/;
+  //   if (emailRegex.test(emailOne)) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   // console.log();
   const context = {
-    email, setEmail,
-    password, setPassword,
-    buttonRegister, setButtonRegister,
-    name, setName,
-    lastName, setLastName,
-    emailRegister, setEmailRegister,
-    passwordRegister, setPasswordRegister,
-    compareEmail, storage, setStorage,
-    date, setDate, buttonUserEmail,
-    setButtonUserEmail, buttonUserPassword,
-    comparePassword, setButtonUserPassword,
-    checkPassword, confirmName, setConfirmName,
-    showConfirmPassword, setShowConfirmPassword,
-    buttonUserName, setButtonUserName,
-    setConfirmLastName, buttonUserLastName,
-    setButtonUserLastName, buttonUserEmailCheck,
-    setButtonUserEmailCheck, buttonUserDate,
-    setButtonUserDate, categories,
-    setCategories, IdCategories, setIdCategories,
-    InputSearchProduct, setInputSearchProduct,
-    newDataProducts, setNewDataProducts
+    email,
+    setEmail,
+    password,
+    setPassword,
+    buttonRegister,
+    setButtonRegister,
+    name,
+    setName,
+    lastName,
+    setLastName,
+    emailRegister,
+    setEmailRegister,
+    passwordRegister,
+    setPasswordRegister,
+    compareEmail,
+    storage,
+    setStorage,
+    date,
+    setDate,
+    buttonUserEmail,
+    setButtonUserEmail,
+    buttonUserPassword,
+    comparePassword,
+    setButtonUserPassword,
+    checkPassword,
+    confirmName,
+    setConfirmName,
+    showConfirmPassword,
+    setShowConfirmPassword,
+    buttonUserName,
+    setButtonUserName,
+    setConfirmLastName,
+    buttonUserLastName,
+    setButtonUserLastName,
+    buttonUserEmailCheck,
+    setButtonUserEmailCheck,
+    buttonUserDate,
+    setButtonUserDate,
+    categories,
+    setCategories,
+    IdCategories,
+    setIdCategories,
+    InputSearchProduct,
+    setInputSearchProduct,
+    newDataProducts,
+    setNewDataProducts,
   }; // Constante feita para alocar todos os dados que serão passados posteriormente no value do provider
 
   return (
-    <ProjectContext.Provider value={context}>
+    <ProjectContext.Provider value={ context }>
       {children}
     </ProjectContext.Provider>
   );
