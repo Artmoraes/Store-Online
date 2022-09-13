@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 export async function getCategories() {
   // const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
-  const response = await fetch('https://e-commerce-bkd.herokuapp.com/categories');
-  const data = await response.json();
-
+  // const response = await fetch();
+  const { data } = await axios.get('https://e-commerce-bkd.herokuapp.com/categories');
+  console.log(data);
   return data;
 }
 

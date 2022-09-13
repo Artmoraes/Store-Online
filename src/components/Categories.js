@@ -18,7 +18,7 @@ function Categories() {
             id={ element.id }
             onChange={ ({ target }) => { setIdCategories(target.id); } }
           />
-          {element.name}
+          {element.nameCategory}
         </label>))}
     </div>
   );

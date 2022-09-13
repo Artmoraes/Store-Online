@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { getCategories } from '../services/api';
 import ProjectContext from './ProjectContext';
 
 function DataProvider({ children }) {
@@ -33,7 +34,7 @@ function DataProvider({ children }) {
   useEffect(() => {
     try {
       // Utilizado na aba Home para atualizar a API
-      // getCategories().then((dataObj) => { setCategories(dataObj); });
+      getCategories().then((dataObj) => { setCategories(dataObj); });
       // getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct).then((dataObj) => { setNewDataProducts(dataObj) })
     } catch (error) {
       console.error(error);
