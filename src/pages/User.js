@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
-import ProjectContext from "../context/ProjectContext";
-import imagem from './png/imagemPreta.jpg'
+import React, { useContext, useState } from 'react';
+import ProjectContext from '../context/ProjectContext';
+import imagem from './png/imagemPreta.jpg';
 
 function User() {
   const {
@@ -10,7 +10,7 @@ function User() {
     buttonUserEmail, buttonUserPassword,
     setConfirmName, buttonUserName, buttonUserLastName,
     showConfirmPassword, setShowConfirmPassword, setConfirmLastName,
-    buttonUserDate
+    buttonUserDate,
   } = useContext(ProjectContext);
 
   const [showElementName, setShowElementName] = useState(false);
@@ -35,23 +35,27 @@ function User() {
     localStorage.setItem('name', name);
     if (showConfirmPassword === password) {
       return (
-        <input type="text"
-          value={name}
-          onChange={({ target }) => {
+        <input
+          type="text"
+          value={ name }
+          onChange={ ({ target }) => {
             setName(target.value);
-          }} required>
-        </input>
+          } }
+          required
+        />
       );
-    } else if (showConfirmPassword !== password) {
+    } if (showConfirmPassword !== password) {
       return (
         <section>
           <p>Insira sua senha para alterar o Nome</p>
-          <input type="text"
-            value={showConfirmPassword}
-            onChange={({ target }) => {
+          <input
+            type="text"
+            value={ showConfirmPassword }
+            onChange={ ({ target }) => {
               setShowConfirmPassword(target.value);
-            }} required>
-          </input>
+            } }
+            required
+          />
         </section>
       );
     }
@@ -61,23 +65,27 @@ function User() {
     localStorage.setItem('lastName', lastName);
     if (showConfirmPassword === password) {
       return (
-        <input type="text"
-          value={lastName}
-          onChange={({ target }) => {
+        <input
+          type="text"
+          value={ lastName }
+          onChange={ ({ target }) => {
             setLastName(target.value);
-          }} required>
-        </input>
+          } }
+          required
+        />
       );
-    } else if (showConfirmPassword !== password) {
+    } if (showConfirmPassword !== password) {
       return (
         <section>
           <p>Insira sua senha para alterar o Nome</p>
-          <input type="text"
-            value={showConfirmPassword}
-            onChange={({ target }) => {
+          <input
+            type="text"
+            value={ showConfirmPassword }
+            onChange={ ({ target }) => {
               setShowConfirmPassword(target.value);
-            }} required>
-          </input>
+            } }
+            required
+          />
         </section>
       );
     }
@@ -88,23 +96,27 @@ function User() {
 
     if (showConfirmPassword === password) {
       return (
-        <input type="email"
-          value={email}
-          onChange={({ target }) => {
+        <input
+          type="email"
+          value={ email }
+          onChange={ ({ target }) => {
             setEmail(target.value);
-          }} required>
-        </input>
+          } }
+          required
+        />
       );
-    } else if (showConfirmPassword !== password) {
+    } if (showConfirmPassword !== password) {
       return (
         <section>
           <p>Insira sua senha para alterar o Email</p>
-          <input type="text"
-            value={showConfirmPassword}
-            onChange={({ target }) => {
+          <input
+            type="text"
+            value={ showConfirmPassword }
+            onChange={ ({ target }) => {
               setShowConfirmPassword(target.value);
-            }} required>
-          </input>
+            } }
+            required
+          />
         </section>
       );
     }
@@ -113,14 +125,14 @@ function User() {
   function NewPassword() {
     localStorage.setItem('password', password);
     return (
-      <>
-        <input type="text"
-          value={password}
-          onChange={({ target }) => {
-            setPassword(target.value);
-          }} required>
-        </input>
-      </>
+      <input
+        type="text"
+        value={ password }
+        onChange={ ({ target }) => {
+          setPassword(target.value);
+        } }
+        required
+      />
     );
   }
 
@@ -132,23 +144,28 @@ function User() {
     localStorage.setItem('date', date);
     if (showConfirmPassword === password) {
       return (
-        <input type="date"
-          value={date}
-          onChange={({ target }) => {
+        <input
+          type="date"
+          value={ date }
+          onChange={ ({ target }) => {
             setDate(target.value);
-          }} max="2010-01-01" required>
-        </input>
+          } }
+          max="2010-01-01"
+          required
+        />
       );
-    } else if (showConfirmPassword !== password) {
+    } if (showConfirmPassword !== password) {
       return (
         <section>
           <p>Insira sua senha para alterar a data</p>
-          <input type="text"
-            value={showConfirmPassword}
-            onChange={({ target }) => {
+          <input
+            type="text"
+            value={ showConfirmPassword }
+            onChange={ ({ target }) => {
               setShowConfirmPassword(target.value);
-            }} required>
-          </input>
+            } }
+            required
+          />
         </section>
       );
     }
@@ -157,75 +174,169 @@ function User() {
   return (
     <div>
       <fieldset>
-        <p>Nome: {showElementName ? NewName() : name}</p>
+        <p>
+          Nome:
+          {' '}
+          {showElementName ? NewName() : name}
+        </p>
         {
-          showElementNameButton ?
-            <button type="button" disabled={buttonUserName} onClick={() => {
-              setShowElementName(!showElementName);
-              setShowElementNameButton(!showElementNameButton);
-              setConfirmName(true);
-            }}> Confirmar </button>
-            :
-            <button type="button" onClick={() => {
-              setShowElementName(!showElementName);
-              setShowElementNameButton(!showElementNameButton);
-            }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
+          showElementNameButton
+            ? <button
+                type="button"
+                disabled={ buttonUserName }
+                onClick={ () => {
+                setShowElementName(!showElementName);
+                setShowElementNameButton(!showElementNameButton);
+                setConfirmName(true);
+              } }
+            >
+              {' '}
+              Confirmar
+              {' '}
+
+              </button>
+            : <button
+                type="button"
+                onClick={ () => {
+                setShowElementName(!showElementName);
+                setShowElementNameButton(!showElementNameButton);
+              } }
+            >
+              {' '}
+              <span role="img" aria-label="pencil"> ✏️ </span>
+              {' '}
+
+              </button>
         }
 
-        <p>Sobrenome:  {showElementLastName ? NewLastName() : lastName}</p>
-        {showElementLastNameButton ?
-          <button type="button" disabled={buttonUserLastName} onClick={() => {
-            setShowElementLastName(!showElementLastName)
-            setShowElementLastNameButton(!showElementLastNameButton);
-            setConfirmLastName(true);
-          }}> Confirmar </button>
-          :
-          <button type="button" onClick={() => {
-            setShowElementLastName(!showElementLastName)
-            setShowElementLastNameButton(!showElementLastNameButton);
-          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
-        }
+        <p>
+          Sobrenome:
+          {' '}
+          {showElementLastName ? NewLastName() : lastName}
+        </p>
+        {showElementLastNameButton
+          ? <button
+              type="button"
+              disabled={ buttonUserLastName }
+              onClick={ () => {
+              setShowElementLastName(!showElementLastName);
+              setShowElementLastNameButton(!showElementLastNameButton);
+              setConfirmLastName(true);
+            } }
+          >
+            {' '}
+            Confirmar
+            {' '}
 
-        <p>Email: {showElementEmail ? NewEmail() : email}</p>
-        {showElementEmailButton ?
-          <button type="button" disabled={buttonUserEmail} onClick={() => {
-            setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton)
-          }}> Confirmar </button>
-          :
-          <button type="button" onClick={() => {
-            setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton)
-          }} > <span role="img" aria-label="pencil"> ✏️ </span> </button>
-        }
+            </button>
+          : <button
+              type="button"
+              onClick={ () => {
+              setShowElementLastName(!showElementLastName);
+              setShowElementLastNameButton(!showElementLastNameButton);
+            } }
+          >
+            {' '}
+            <span role="img" aria-label="pencil"> ✏️ </span>
+            {' '}
 
-        <p>Password: {showElementPassword ? NewPassword() : NoHidePassword(password)}</p>
-        {showElementPasswordButton ?
-          <button type="button" disabled={buttonUserPassword} onClick={() => {
-            setShowElementPassword(!showElementPassword);
-            setShowElementPasswordButton(!showElementPasswordButton);
-            setConfirmElementPassword(!confirmElementPassword)
-          }}>Confirmar</button>
-          :
-          <button type="button" onClick={() => {
-            setShowElementPassword(!showElementPassword);
-            setShowElementPasswordButton(!showElementPasswordButton)
-          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
-        }
-        <p>Data de aniversário: {showElementDate ? NewDate() : date}</p>
+            </button>}
 
-        {showElementDateButton ?
-          <button type="button" disabled={buttonUserDate} onClick={() => {
-            setShowElementDate(!showElementDate);
-            setShowElementDateButton(!showElementDateButton);
-          }}> Confirmar </button>
-          :
-          <button type="button" onClick={() => {
-            setShowElementDate(!showElementDate);
-            setShowElementDateButton(!showElementDateButton);
-          }}> <span role="img" aria-label="pencil"> ✏️ </span> </button>
-        }
+        <p>
+          Email:
+          {' '}
+          {showElementEmail ? NewEmail() : email}
+        </p>
+        {showElementEmailButton
+          ? <button
+              type="button"
+              disabled={ buttonUserEmail }
+              onClick={ () => {
+              setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton);
+            } }
+          >
+            {' '}
+            Confirmar
+            {' '}
+
+            </button>
+          : <button
+              type="button"
+              onClick={ () => {
+              setShowElementEmail(!showElementEmail); setShowElementEmailButton(!showElementEmailButton);
+            } }
+          >
+            {' '}
+            <span role="img" aria-label="pencil"> ✏️ </span>
+            {' '}
+
+            </button>}
+
+        <p>
+          Password:
+          {' '}
+          {showElementPassword ? NewPassword() : NoHidePassword(password)}
+        </p>
+        {showElementPasswordButton
+          ? <button
+              type="button"
+              disabled={ buttonUserPassword }
+              onClick={ () => {
+              setShowElementPassword(!showElementPassword);
+              setShowElementPasswordButton(!showElementPasswordButton);
+              setConfirmElementPassword(!confirmElementPassword);
+            } }
+          >
+            Confirmar
+
+          </button>
+          : <button
+              type="button"
+              onClick={ () => {
+              setShowElementPassword(!showElementPassword);
+              setShowElementPasswordButton(!showElementPasswordButton);
+            } }
+          >
+            {' '}
+            <span role="img" aria-label="pencil"> ✏️ </span>
+            {' '}
+
+            </button>}
+        <p>
+          Data de aniversário:
+          {' '}
+          {showElementDate ? NewDate() : date}
+        </p>
+
+        {showElementDateButton
+          ? <button
+              type="button"
+              disabled={ buttonUserDate }
+              onClick={ () => {
+              setShowElementDate(!showElementDate);
+              setShowElementDateButton(!showElementDateButton);
+            } }
+          >
+            {' '}
+            Confirmar
+            {' '}
+
+            </button>
+          : <button
+              type="button"
+              onClick={ () => {
+              setShowElementDate(!showElementDate);
+              setShowElementDateButton(!showElementDateButton);
+            } }
+          >
+            {' '}
+            <span role="img" aria-label="pencil"> ✏️ </span>
+            {' '}
+
+            </button>}
         <br />
         <br />
-        <img src={imagem} alt="Tela de usuário" width="150px"></img>
+        <img src={ imagem } alt="Tela de usuário" width="150px" />
       </fieldset>
     </div>
   );

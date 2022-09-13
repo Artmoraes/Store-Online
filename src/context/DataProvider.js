@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { getCategories } from '../services/api';
+import { getCategories, getProducts } from '../services/api';
 import ProjectContext from './ProjectContext';
 
 function DataProvider({ children }) {
@@ -12,7 +12,7 @@ function DataProvider({ children }) {
   const [emailRegister, setEmailRegister] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRegister, setPasswordRegister] = useState('');
-
+  const [products, setProducts] = useState([]);
   const [buttonUserName, setButtonUserName] = useState(false);
   const [buttonUserLastName, setButtonUserLastName] = useState(false);
   const [buttonUserEmail, setButtonUserEmail] = useState(false);
@@ -35,6 +35,7 @@ function DataProvider({ children }) {
     try {
       // Utilizado na aba Home para atualizar a API
       getCategories().then((dataObj) => { setCategories(dataObj); });
+      getProducts().then((dataObj) => { setProducts(dataObj); });
       // getProductsFromCategoryAndQuery(IdCategories, InputSearchProduct).then((dataObj) => { setNewDataProducts(dataObj) })
     } catch (error) {
       console.error(error);
@@ -190,6 +191,7 @@ function DataProvider({ children }) {
     setInputSearchProduct,
     newDataProducts,
     setNewDataProducts,
+    products,
   }; // Constante feita para alocar todos os dados que serão passados posteriormente no value do provider
 
   return (

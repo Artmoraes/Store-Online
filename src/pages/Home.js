@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
 import ProjectContext from '../context/ProjectContext';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import Products from './Products';
 // import Product from './Product';
-import SearchProducts from './SearchProducts';
 
 function Home() {
   const { IdCategories, InputSearchProduct,
@@ -43,16 +41,16 @@ function Home() {
     </div>
   );
 
-  const count = localStorage.getItem('count');
+  // const count = localStorage.getItem('count');
 
   return (
     <main>
       <nav>
         {inputForm()}
-        <Link data-testid="shopping-cart-button" to="/ShoppingCart">
+        {/* <Link data-testid="shopping-cart-button" to="/ShoppingCart">
           <FaShoppingCart />
           <p data-testid="shopping-cart-size">{count}</p>
-        </Link>
+        </Link> */}
       </nav>
       <aside>
         <Categories />
@@ -61,8 +59,9 @@ function Home() {
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
-        <SearchProducts />
+        {/* <SearchProducts /> */}
       </section>
+      <Products />
     </main>
   );
 }

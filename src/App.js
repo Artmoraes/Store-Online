@@ -2,56 +2,32 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import DataProvider from './context/DataProvider';
-import Checkout from './pages/Checkout';
 import DetailsProduct from './pages/DetailsProduct';
 import Home from './pages/Home';
+import InsertProducts from './pages/InsertProducts';
 import Login from './pages/Login';
+import Products from './pages/Products';
 import Register from './pages/Register';
 import ShoppingCart from './pages/ShoppingCart';
 import User from './pages/User';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      productsInCart: [],
-      quantity: 0,
-    };
-  }
-
-  addCartList = (product) => {
-    this.setState((prevState) => ({
-      productsInCart: [...prevState.productsInCart, product],
-      quantity: prevState.quantity + 1,
-    }));
-  }
-
-  removeProduct = ({ target }) => {
-    const { productsInCart } = this.state;
-    const newPruductsIncart = productsInCart;
-    const { className } = target;
-
-    newPruductsIncart.splice(className, 1);
-    this.setState(newPruductsIncart);
-  }
-
   render() {
-    const { productsInCart } = this.state;
-
     return (
       <DataProvider>
         <BrowserRouter>
           <Switch>
             <Route path="/" exact>
-              <Home
-                addCartList={ this.addCartList }
-              />
+              <Home />
+            </Route>
+            <Route path="/categories" exact>
+              <InsertProducts />
+            </Route>
+            <Route path="/products" exact>
+              <Products />
             </Route>
             <Route path="/ShoppingCart">
-              <ShoppingCart
-                removeProduct={ this.removeProduct }
-                productsInCart={ productsInCart }
-              />
+              <ShoppingCart />
             </Route>
             <Route path="/" exact component={ Home } />
             <Route path="/ShoppingCart" component={ ShoppingCart } />
@@ -62,9 +38,6 @@ class App extends React.Component {
                 addCartList={ this.addCartList }
               />) }
             />
-            <Route path="/Checkout">
-              <Checkout productsInCart={ productsInCart } />
-            </Route>
             <Route path="/login">
               <Login />
             </Route>
