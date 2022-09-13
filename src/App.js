@@ -44,26 +44,26 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact>
               <Home
-                addCartList={this.addCartList}
+                addCartList={ this.addCartList }
               />
             </Route>
             <Route path="/ShoppingCart">
               <ShoppingCart
-                removeProduct={this.removeProduct}
-                productsInCart={productsInCart}
+                removeProduct={ this.removeProduct }
+                productsInCart={ productsInCart }
               />
             </Route>
-            <Route path="/" exact component={Home} />
-            <Route path="/ShoppingCart" component={ShoppingCart} />
+            <Route path="/" exact component={ Home } />
+            <Route path="/ShoppingCart" component={ ShoppingCart } />
             <Route
               path="/DetailsProduct/:id"
-              render={(props) => (<DetailsProduct
-                {...props}
-                addCartList={this.addCartList}
-              />)}
+              render={ (props) => (<DetailsProduct
+                { ...props }
+                addCartList={ this.addCartList }
+              />) }
             />
             <Route path="/Checkout">
-              <Checkout productsInCart={productsInCart} />
+              <Checkout productsInCart={ productsInCart } />
             </Route>
             <Route path="/login">
               <Login />
