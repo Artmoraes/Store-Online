@@ -1,19 +1,17 @@
 # Boas vindas ao repositório do projeto Online Store!
 
-## O que foi desenvolvido
+## O que foi utilizado
 
-* Entender o que são Métodos Ágeis
-* Entender o que é Kanban
-* Entender o que é Scrum
-* Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
-* Praticar todas as habilidades desenvolvidas até agora no módulo de Front-End
+* Métodos Ágeis
+* Kanban
+* React
 
 ## O que deverá ser desenvolvido
 
-Neste projeto foi criada uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo ao do mercado de trabalho. A partir dessas demandas, teremos uma aplicação onde os usuários poderão:
-  - Buscar produtos por termos e categorias a partir da _API do Mercado Livre_;
-  - Interagir com os produtos buscados de modo a adicioná-los e removê-los de um carrinho de compras em diferentes quantidades;
-  - Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações;
+Neste projeto foi criada uma versão simplificada, com banco de dados, de uma **loja online**, desenvolvendo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_. A partir dessas demandas, teremos uma aplicação onde os usuários poderão:
+  - Buscar produtos por termos e categorias a partir do _Back-End_ criado;
+  - Interagir com os produtos buscados de modo a adicioná-los e removê-los de um carrinho de compras;
+  - Visualizar detalhes e avaliações prévias de um produto;
   - E por fim, finalizar a compra (simulada) dos itens selecionados.
 
 # Store-Online
