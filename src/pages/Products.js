@@ -4,7 +4,9 @@ import ProjectContext from '../context/ProjectContext';
 import './css/Products.css';
 
 function Products() {
-  const { products, categories, setIdCategories } = useContext(ProjectContext);
+  const {
+    products, categories, setIdCategories,
+  } = useContext(ProjectContext);
 
   return (
     <div>
@@ -12,7 +14,7 @@ function Products() {
         <section key={ element.id } className="box-categories-products">
           <h1>{element.nameCategory}</h1>
           <div className="box-all-products">
-            {products.map((objProd) => (element.id === objProd.CategoryId ? (
+            { products.map((objProd) => (element.id === objProd.CategoryId ? (
               <fieldset key={ objProd.id } className="box-product">
                 <Link
                   to={ `./detailsproduct/${objProd.id}` }

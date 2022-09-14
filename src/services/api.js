@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// const link = 'https://e-commerce-bkd.herokuapp.com/categories';
-
 export async function getCategories() {
   const link = 'https://e-commerce-bkd.herokuapp.com/categories';
   const { data } = await axios.get(link);
