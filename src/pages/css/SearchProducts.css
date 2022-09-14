@@ -1,0 +1,48 @@
+/* stylelint-disable length-zero-no-unit */
+
+/* stylelint-disable shorthand-property-no-redundant-values */
+.button:focus, button:active {
+  outline: none;
+}
+
+.navigation-bar {
+  align-items: center;
+  background-color: #131921;
+  display: flex;
+  height: 70px;
+  justify-content: space-evenly;
+}
+
+.material-ui {
+  color: hwb(0 100% 0%);
+}
+
+.magnifying-glass {
+  color: #131921;
+}
+
+.search-form {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 400px;
+}
+
+.magnifying-glass-button {
+  background-color: #f3a847;
+  border-radius: 0px 10px 10px 0px;
+  height: 50px;
+  width: 50px;
+}
+
+.search-input {
+  border-radius: 10px 0px 0px 10px;
+  height: 45px;
+  padding: 0px;
+  width: 300px;
+}
+
+.search-input:hover {
+  border: 4px solid #f3a847;
+}
+

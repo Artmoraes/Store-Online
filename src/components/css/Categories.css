@@ -1,0 +1,20 @@
+.container-categories {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  margin-left: 20px;
+  width: 250px;
+}
+
+.container-categories h1 {
+  margin: 20px;
+}
+
+.box-categories {
+  margin: 10px;
+  width: 300px;
+}
+
+.type-category {
+  background-color: aqua;
+}

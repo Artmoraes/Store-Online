@@ -1,0 +1,16 @@
+.box-categories-products {
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.box-all-products {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-product {
+  border-radius: 10%;
+  width: 100px;
+}

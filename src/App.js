@@ -3,11 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import DataProvider from './context/DataProvider';
 import DetailsProduct from './pages/DetailsProduct';
+import FinalizePurchase from './pages/FinalizePurchase';
 import Home from './pages/Home';
 import InsertProducts from './pages/InsertProducts';
-import Login from './pages/Login';
 import Products from './pages/Products';
-import Register from './pages/Register';
 import ShoppingCart from './pages/ShoppingCart';
 import User from './pages/User';
 
@@ -20,6 +19,9 @@ class App extends React.Component {
             <Route path="/" exact>
               <Home />
             </Route>
+            <Route path="/user">
+              <User />
+            </Route>
             <Route path="/categories" exact>
               <InsertProducts />
             </Route>
@@ -31,21 +33,14 @@ class App extends React.Component {
             </Route>
             <Route path="/" exact component={ Home } />
             <Route path="/ShoppingCart" component={ ShoppingCart } />
-            <Route
-              path="/DetailsProduct/:id"
-              render={ (props) => (<DetailsProduct
-                { ...props }
-                addCartList={ this.addCartList }
-              />) }
-            />
-            <Route path="/login">
-              <Login />
+            <Route path="/detailsproduct/:id">
+              <DetailsProduct />
             </Route>
-            <Route path="/register">
-              <Register />
+            <Route path="/insertproducts">
+              <InsertProducts />
             </Route>
-            <Route path="/user">
-              <User />
+            <Route path="/finalizePurchase">
+              <FinalizePurchase />
             </Route>
           </Switch>
         </BrowserRouter>

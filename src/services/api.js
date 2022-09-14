@@ -20,24 +20,14 @@ export async function getProducts() {
   return data;
 }
 
-export async function getProductsFromCategoryAndQuery(categoryId, query) {
-  let link;
-  if (categoryId !== '' && query !== '') {
-    // link = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`;
-  } else if (categoryId !== '' && query === '') {
-    // link = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`;
-  } else {
-    // link = `https://api.mercadolibre.com/sites/MLB/search?q=${query}`;
-  }
-
-  const response = await fetch(link);
-  const data = await response.json();
-
+export async function especificProductDetails(productId) {
+  const link = `https://e-commerce-bkd.herokuapp.com/products/${productId}`;
+  const { data } = await axios.get(link);
   return data;
 }
 
-export async function displaysProductDetails(productId) {
-  const response = await fetch(`https://api.mercadolibre.com/items/${productId}`);
-  const data = response.json();
-  return data;
-}
+// export async function getCEP(cep) {
+//   const link = `https://viacep.com.br/ws/${cep}/json`;
+//   const data = await axios.get(link);
+//   return data;
+// }

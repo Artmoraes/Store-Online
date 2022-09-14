@@ -1,0 +1,71 @@
+.container-all-cart h1 {
+  margin: 30px;
+  width: 100%;
+}
+
+.container-all-cart {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container-cart-products {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 700px;
+}
+
+/* .cart-products {
+} */
+
+.cart-item {
+  border: 1px solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  margin: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.container-cart-cep {
+  background-color: #131921;
+  border: 1px solid;
+  border-radius: 10px;
+  color: #f3a847;
+  display: flex;
+  justify-content: flex-start;
+  padding: 30px;
+  width: 300px;
+}
+
+.cart-name-lastname {
+  height: 80px;
+  width: 300px;
+}
+
+.input {
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  outline: none;
+}
+
+.inputNames {
+  margin-left: 0;
+  width: 120px;
+}
+
+.inputNames:nth-child( 1 ) {
+  margin-left: 20px;
+  width: 120px;
+}
+
+.input:hover {
+  border: 3px solid #f3a847;
+}

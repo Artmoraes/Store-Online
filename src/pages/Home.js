@@ -1,24 +1,26 @@
 import React from 'react';
 import Categories from '../components/Categories';
+import './css/Home.css';
 import Products from './Products';
 import SearchProducts from './SearchProducts';
-// import Product from './Product';
 
 function Home() {
   return (
-    <main>
+    <>
       <nav>
         <SearchProducts />
-        {/* <Link to="/ShoppingCart">
-          <FaShoppingCart />
-          <p>{count}</p>
-        </Link> */}
       </nav>
-      <aside>
-        <Categories />
-      </aside>
-      <Products />
-    </main>
+      <main className="container-home">
+        <div className="container-categories-products">
+          <aside>
+            <Categories />
+          </aside>
+          <main className="container-products">
+            <Products />
+          </main>
+        </div>
+      </main>
+    </>
   );
 }
 

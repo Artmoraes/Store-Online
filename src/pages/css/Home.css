@@ -1,0 +1,12 @@
+.container-home {
+  width: 100%;
+}
+
+.container-categories-products {
+  display: flex;
+}
+
+.container-products {
+  margin: 10px;
+  width: 75%;
+}

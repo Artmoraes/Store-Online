@@ -1,0 +1,27 @@
+.inputProduct {
+  border: none;
+  border: 1px solid #000;
+  border-radius: 10px;
+  height: 40px;
+  margin: 10px;
+  outline: none;
+  padding: 0;
+  width: 300px;
+}
+
+.container-insert-products {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-insert-products {
+  margin: 20px;
+  padding: 10px;
+  width: 310px;
+}
+
+.form-insert-products label, .btnProd {
+  margin: 10px;
+}
